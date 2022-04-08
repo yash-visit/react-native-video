@@ -156,7 +156,11 @@ static int const RCTVideoUnset = -1;
   viewController.showsPlaybackControls = YES;
   viewController.rctDelegate = self;
   viewController.preferredOrientation = _fullscreenOrientation;
-  
+  // --->>>> pip
+  if (@available(iOS 9.0, *)) {
+	  viewController.allowsPictureInPicturePlayback = _pictureInPicture;
+  }
+  // <<<<--- pip
   viewController.view.frame = self.bounds;
   viewController.player = player;
   return viewController;
